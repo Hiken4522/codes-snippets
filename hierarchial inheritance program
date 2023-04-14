@@ -1,0 +1,198 @@
+#include<iostream>
+#include<string>
+#include<list>
+
+using namespace std;
+
+int a;
+
+class Car_type{
+protected:
+    string carbrand;
+    string carmodel;
+    string buyername;
+    string franchaisname;
+
+public:
+    string cb;
+    string cm;
+    string bn;
+    string fn;
+    Car_type(){
+        cout<<"Enter the car brand: ";
+        getline(cin>>ws,cb);
+
+        cout<<"Enter the car model: ";
+        getline(cin>>ws,cm);
+
+        cout<<"Enter the car buyername: ";
+        getline(cin>>ws,bn);
+
+        cout<<"Enter the car franchaisname: ";
+        getline(cin>>ws,fn);
+
+
+        carbrand = cb;
+        carmodel = cm;
+        buyername = bn;
+        franchaisname = fn;
+
+    }
+
+    void getinfo(){
+        cout<< carbrand<<endl;
+        cout<< carmodel<<endl;
+        cout<< buyername<<endl;
+        cout<< franchaisname<<endl;
+    }
+};
+
+
+class Car_specs: public Car_type{
+protected:
+    string topspeed;
+    string bhp;
+    string nseats;
+    string nwd;
+public:
+    string ts;
+    string bp;
+    string ns;
+    string nd;
+    Car_specs(): Car_type(){
+        cout<<"Enter the top speed of the car: ";
+        getline(cin,ts);
+
+        cout<<"Enter the bhp of the car: ";
+        getline(cin,bp);
+
+        cout<<"Enter the no of seats of the car: ";
+        getline(cin,ns);
+
+        cout<<"Enter the drive type of the car: ";
+        getline(cin,nd);
+
+        topspeed = ts;
+
+        bhp = bp;
+
+        nseats = ns;
+
+        nwd = nd;
+
+    }
+
+    void getspecs(){
+        cout<<topspeed<<endl;
+        cout<<bhp<<endl;
+        cout<<nseats<<endl;
+        cout<<nwd<<endl;
+    }
+}; 
+
+
+
+class Billing_details: public Car_type{
+protected:
+    string price;
+    string tpercent;
+    string dateofb;
+    string billingaddress;
+public:
+    string p;
+    string tp;
+    string db;
+    string ba;
+    Billing_details(): Car_type(){
+        cout<<"enter the price of the car:";
+        getline(cin, p);
+
+        cout<<"enter the tax percentage of the price of the car: ";
+        getline(cin, tp);
+
+        cout<<"enter the date of billing  of the car: ";
+        getline(cin, db);
+
+        cout<<"enter the billing address: ";
+        getline(cin, ba);
+
+        price = p;
+        tpercent = tp;
+        dateofb = db;
+        billingaddress = ba;
+    }
+
+    void getbdetails(){
+        cout<<price<<endl;
+        cout<< tpercent<<endl;
+        cout<< dateofb<< endl;
+        cout<< billingaddress<<endl;
+    }
+    
+};
+
+
+int main(){
+    cout<<"what do you want to do: "<<endl;
+    cout<<"enter the car details(1)"<<endl;
+    cout<<"enter the car specs(2)"<<endl;
+    cout<<"enter the car billing details(3)"<<endl;
+    cin>>a;
+
+    if(a == 1){
+        Car_type obj2;
+        obj2.getinfo();
+        cout<<"Details successfully entered"<<endl;
+    }
+
+    else if(a == 2){
+        Car_specs obj1;
+        int ask;
+        cout<<"would you like to view the car details(1)"<<endl;
+        cout<<"would you like to view the car specs(2)"<<endl;
+        cout<<"would you like to do both(3)"<<endl;
+        cout<<"what would you like to do: "<<endl;
+        cin>>ask;
+
+
+        if(ask == 1){
+            obj1.getinfo();
+        }
+
+        else if (ask == 2){
+            obj1.getspecs();
+        }
+
+        else if(ask == 3){
+            obj1.getinfo();
+            obj1.getspecs();
+        }
+
+    }
+
+    else if(a == 3){
+        Billing_details obj3;
+        int b;
+        cout<<"would you like to view the car details(1)"<<endl;
+        cout<<"would you like to view the billing details(3)"<<endl;
+        cout<<"would you like to do both (3)"<<endl;
+        cout<<"what would you like to do: "<<endl;
+        cin>>b;
+
+        switch(b){
+            case 1:
+                obj3.getinfo();
+                break;
+            case 2:
+                obj3.getbdetails();
+                break;
+            case 3:
+                obj3.getinfo();
+                obj3.getbdetails();
+                break;
+        }
+
+    }
+    
+    return 0;
+}
